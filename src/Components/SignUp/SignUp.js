@@ -1,23 +1,23 @@
 import { Avatar, Button, CardMedia, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
 import LockOutlined from "@mui/icons-material/LockOutlined";
 
 
 
-const SignUp = props => {
-
+const SignUp = () => {
     const nameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const history = useHistory();
+    const [role, setRole] = useState("");
 
     var tokenPrint = <p></p>
 
-    const SignUp = () => {
+    const handleSignup = () => {
         axios.post("https://onlyfit-backend-staging.herokuapp.com/v1/user", {
             name: nameRef.current.value,
             lastName: lastNameRef.current.value,
@@ -34,12 +34,23 @@ const SignUp = props => {
             tokenPrint = <p>${error}</p>
         });
 
+        axios.get(`https://onlyfit-backend-staging.herokuapp.com/v1/user/email?emailAddress=${emailRef.current.value}`)
+            .then((res) => {
+                setRole(res.data)
+            })
+
         axios.post("https://onlyfit-backend-staging.herokuapp.com/v1/auth", {
             email: emailRef.current.value,
             password: passwordRef.current.value
         }).then((res) => {
             localStorage.setItem("accessToken", res.data.accessToken)
-            history.push("/dashboard")
+            if (role === "COACH") {
+                history.push("/home-coach")
+            } else if (role === "USER") {
+                history.push("/home-user")
+            } else {
+                history.push("/")
+            }
         }).catch(error => {
             alert(error)
         });
@@ -57,7 +68,7 @@ const SignUp = props => {
                     <TextField margin="normal" required fullWidth label="LastName" name="lastName" type="lastName" autoComplete="lastName" inputRef={lastNameRef} />
                     <TextField margin="normal" required fullWidth label="Email" name="email" type="email" autoComplete="email" inputRef={emailRef} />
                     <TextField margin="normal" required fullWidth label="Password" name="password" type="password" autoComplete="current-password" inputRef={passwordRef} />
-                    <Button fullWidth variant="contained" sx={{ mt: 3, mb: 3 }} onClick={SignUp}>Create Account</Button>
+                    <Button fullWidth variant="contained" sx={{ mt: 3, mb: 3 }} onClick={handleSignup}>Create Account</Button>
                 </Box>
             </Box>
         </Container>

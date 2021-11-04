@@ -15,8 +15,6 @@ function App() {
         <Route path="/" component={HomeWithoutHome} exact />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/home" component={HomeWithoutHome} />
         <Route path="/user-home" component={UserDashboard} />
         <Route path="/createroutine" component={CreateRoutine}/>
       </Switch>
