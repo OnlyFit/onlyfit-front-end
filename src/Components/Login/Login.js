@@ -13,7 +13,7 @@ const Login = (props) => {
   const [role, setRole] = useState("");
 
   const loginRequest = () => {
-    axios.get(`https://onlyfit-backend-staging.herokuapp.com/v1/user/{emailRef}`)
+    axios.get(`https://onlyfit-backend-staging.herokuapp.com/v1/user/email?emailAddress=${emailRef.current.value}`)
     .then((res) => {
       setRole(res.data)
     })
@@ -47,7 +47,7 @@ const Login = (props) => {
           <Box component="form" sx={{ mt: 1 }}>
             <TextField margin="normal" required fullWidth label="Email" name="email" type="email" autoComplete="email" inputRef={emailRef} />
             <TextField margin="normal" required fullWidth label="Password" name="password" type="password" autoComplete="current-password" inputRef={passwordRef} />
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 3 }} onClick={loginRequest}>Log in</Button>
+            <Button fullWidth variant="contained" sx={{ mt: 3, mb: 3 }} onClick={loginRequest}>Log in</Button>
           </Box>
         </Box>
       </Container>
