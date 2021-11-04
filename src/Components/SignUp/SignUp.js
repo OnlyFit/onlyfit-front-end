@@ -28,31 +28,11 @@ const SignUp = () => {
             alert("Success!!")
             console.log(response);
             tokenPrint = <p>${response.data}</p>
+            history.push("/")
         }).catch(error => {
             console.log(nameRef.current.value, lastNameRef.current.value, emailRef.current.value);
             alert(error);
             tokenPrint = <p>${error}</p>
-        });
-
-        axios.get(`https://onlyfit-backend-staging.herokuapp.com/v1/user/email?emailAddress=${emailRef.current.value}`)
-            .then((res) => {
-                setRole(res.data)
-            })
-
-        axios.post("https://onlyfit-backend-staging.herokuapp.com/v1/auth", {
-            email: emailRef.current.value,
-            password: passwordRef.current.value
-        }).then((res) => {
-            localStorage.setItem("accessToken", res.data.accessToken)
-            if (role === "COACH") {
-                history.push("/home-coach")
-            } else if (role === "USER") {
-                history.push("/home-user")
-            } else {
-                history.push("/")
-            }
-        }).catch(error => {
-            alert(error)
         });
     }
 

@@ -26,7 +26,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function ReviewCard() {
+export default function ReviewCard01() {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -42,18 +42,18 @@ export default function ReviewCard() {
           </Avatar>
         }
 
-        title="Strengthening Training"
-        subheader="Diciembre 24, 2021"
+        title="Yoga Session"
+        subheader="Noviembre 4, 2021"
       />
       <CardMedia
         component="img"
         height="194"
-        image="/static/images/cards/crossfit.jpg"
+        image="/static/images/cards/yoga.jpg"
         alt="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Entrenamiento diseñado para fortalecer los musculos del cuerpo he ir acondicionando dichos musculos para ser capaz de levantar mayores pesos a futuro.
+            Sesion de Yoga para rejalar el cuerpo y liberar el alma.
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

@@ -11,26 +11,26 @@ const Login = () => {
   const history = useHistory();
   const [role, setRole] = useState("");
 
-  function getUserRole() {
-    axios.get(`https://onlyfit-backend-staging.herokuapp.com/v1/user/email?emailAddress=${emailRef.current.value}`).then(res => setRole(res.data))
-  }
-
   const loginRequest = () => {
-    getUserRole();
+    axios.get(`https://onlyfit-backend-staging.herokuapp.com/v1/user/email?emailAddress=${emailRef.current.value}`)
+      .then((res) => {
+        setRole(res.data)
+      })
 
     axios.post("https://onlyfit-backend-staging.herokuapp.com/v1/auth", {
       email: emailRef.current.value,
       password: passwordRef.current.value
     }).then((res) => {
       localStorage.setItem("accessToken", res.data.accessToken)
-      console.log(role)
       if (role === "COACH") {
-        history.push("/home-coach")
+        history.push("/coach-home")
       } else if (role === "USER") {
-        history.push("/home-user")
+        history.push("/user-home")
       } else {
         history.push("/")
       }
+
+      history.push("/user-home")
     }).catch(error => {
       alert(error)
     });

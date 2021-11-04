@@ -1,11 +1,13 @@
 import { AppBar, Toolbar, Typography, IconButton, MenuItem, Box, Menu, Button, Grid } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 const DashboardNavBar = () => {
     const [anchorEl, setAnchorEl] = useState();
     const isMenuOpen = Boolean(anchorEl);
     const menuId = "account-menu";
+    const history = useHistory();
 
     const handleOpenMenu = (e) => {
         setAnchorEl(e.currentTarget);
@@ -15,9 +17,13 @@ const DashboardNavBar = () => {
         setAnchorEl(null);
     };
 
+    const handleLogout = () => {
+        history.push("/")
+    }
+
     const renderMenu = (
         <Menu anchorEl={anchorEl} anchorOrigin={{vertical: "top", horizontal: "right"}} keepMounted transformOrigin={{vertical: "top", horizontal: "right"}} open={isMenuOpen} onClose={handleCloseMenu} id={menuId}>
-            <MenuItem onClick={handleCloseMenu}>Log out</MenuItem>
+            <MenuItem onClick={(handleCloseMenu, handleLogout)}>Log out</MenuItem>
         </Menu>
     );
 
