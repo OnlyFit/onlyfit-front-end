@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router';
 import Dashboard from './Components/Dashboard/Dashboard';
+import UserDashboard from './Components/Dashboard/UserDashboard';
 import DashboardUserTest from './Components/Dashboard/DashboardUserTest';
 import DashboardCoachTest from './Components/Dashboard/DashboardCoachTest';
 import HomeWithoutHome from './Components/HomeWithoutLogin/HomeWithoutLogin';
@@ -11,12 +12,10 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route path="/" component={Login} exact/>
-        <Route path="/signup" component={SignUp}/>
-        <Route path="/dashboard" component={Dashboard}/>
-        <Route path="/dashboarduser" component={DashboardUserTest}/>
-        <Route path="/dashboardcoach" component={DashboardCoachTest}/>
-        <Route path="/everyonehome" component={HomeWithoutHome}/>
+        <Route path="/" component={HomeWithoutHome} exact />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/user-home" component={UserDashboard} />
         <Route path="/createroutine" component={CreateRoutine}/>
       </Switch>
     </div>
