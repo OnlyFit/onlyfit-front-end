@@ -29,7 +29,6 @@ const MyClass = props => {
     return (
         <Box className={classes.hero}>
             <Box>
-                <Button variant="contained">Empieza Ahora</Button>
             </Box>
         </Box>
     );

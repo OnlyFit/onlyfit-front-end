@@ -1,35 +1,15 @@
 import React from 'react'
-import NavBarHome from '../HomeWithoutLogin/NavBarHome';
 import { Box } from '@mui/system';
 import Grid from '@mui/material/Grid';
 import Item from '@mui/material/MenuItem';
 import MyClass from '../Dashboard/MyClass';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import DashboardNavBarCoach from './DashboardNavBarCoach';
 
-const itemData = [
-    {
-      img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a',
-      title: 'Breakfast',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61',
-      title: 'Burger',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1571019613531-fbeaeb790845',
-      title: 'Camera',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1534258936925-c58bed479fcb',
-      title: 'Coffee',
-    }
-  ];
 
 const DashboardCoachTest = props => {
     return(
         <Box sx={{ flexGrow: 1 }}>
-            <NavBarHome />
+            <DashboardNavBarCoach />
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Item>x</Item>
