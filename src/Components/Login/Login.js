@@ -22,6 +22,10 @@ const Login = (props) => {
     });
   };
 
+  const createAccountRequest = () => {
+    history.push("/signup")
+  }
+
   return (
     <div>
       <Container component="main" maxWidth="xs">
@@ -35,6 +39,7 @@ const Login = (props) => {
             <TextField margin="normal" required fullWidth label="Email" name="email" type="email" autoComplete="email" inputRef={emailRef} />
             <TextField margin="normal" required fullWidth label="Password" name="password" type="password" autoComplete="current-password" inputRef={passwordRef} />
             <Button fullWidth variant="contained" sx={{ mt: 3, mb: 3 }} onClick={loginRequest}>Log in</Button>
+            <Button fullWidth variant="outlined" sx={{ mt: -1, mb: 3 }}>Crear Cuenta</Button>
           </Box>
         </Box>
       </Container>

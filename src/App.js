@@ -4,6 +4,7 @@ import UserDashboard from './Components/Dashboard/UserDashboard';
 import HomeWithoutHome from './Components/HomeWithoutLogin/HomeWithoutLogin';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
+import CreateRoutine from './Components/CreateRoutine';
 
 function App() {
   return (
