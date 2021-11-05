@@ -1,7 +1,7 @@
 import { Avatar, Button, CardMedia, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
 import LockOutlined from "@mui/icons-material/LockOutlined";
 
@@ -9,17 +9,30 @@ const Login = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const history = useHistory();
+  const [users, setUsers] = useState();
+  const [role, setRole] = useState("");
 
   const loginRequest = () => {
+    axios.get(`https://onlyfit-backend-staging.herokuapp.com/v1/user/email?emailAddress=${emailRef.current.value}`)
+    .then((res) => {
+      setRole(res.data)
+    })
+
     axios.post("https://onlyfit-backend-staging.herokuapp.com/v1/auth", {
       email: emailRef.current.value,
       password: passwordRef.current.value
     }).then((res) => {
       localStorage.setItem("accessToken", res.data.accessToken)
-      history.push("/dashboard")
+      if (role === "COACH"){
+        history.push("/dashboardcoach")
+      }else if (role === "USER"){
+        history.push("/dashboarduser")
+      }
+      
     }).catch(error => {
       alert(error)
     });
+
   };
 
   const createAccountRequest = () => {
