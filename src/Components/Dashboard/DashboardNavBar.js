@@ -18,7 +18,8 @@ const DashboardNavBar = () => {
     };
 
     const handleLogout = () => {
-        history.push("/")
+        history.push("/");
+        localStorage.setItem("userMail","");
     }
 
     const renderMenu = (

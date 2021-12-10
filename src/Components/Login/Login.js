@@ -17,6 +17,7 @@ const Login = () => {
       .then((res) => {
         setRole(res.data)
         console.log(role);
+        localStorage.setItem("userMail",emailRef.current.value);
       })
 
     axios.post("https://onlyfit-backend-staging.herokuapp.com/v1/auth", {
