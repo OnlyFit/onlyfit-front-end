@@ -19,6 +19,7 @@ const DashboardNavBarCoach = () => {
 
     const handleLogout = () => {
         history.push("/")
+        localStorage.setItem("userMail","");
     }
 
     const renderMenu = (
@@ -31,6 +32,18 @@ const DashboardNavBarCoach = () => {
         history.push("/createroutine")
     }
 
+    const handleCheckRoutines = () => {
+        history.push("/check-routines")
+    }
+
+    const handleCheckClasses = () => {
+        history.push("/check-classes")
+    }
+
+    const handleMainPage = () => {
+        history.push("/coach-home")
+    }
+
     return (
         <AppBar position="fixed" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
             <Toolbar>
@@ -39,9 +52,9 @@ const DashboardNavBarCoach = () => {
                 </Typography>
                 <Grid container sx={{ml: 3}}>
                     <Grid item>
-                        <Button variant="outlined" color="inherit" sx={{mr: 2}}>Inicio</Button>
-                        <Button variant="outlined" color="inherit" sx={{mr: 2}}>Mis Clases</Button>
-                        <Button variant="outlined" color="inherit" sx={{mr: 2}}>Mis Rutinas</Button>
+                        <Button onClick={handleMainPage} variant="outlined" color="inherit" sx={{mr: 2}}>Inicio</Button>
+                        <Button onClick={handleCheckClasses} variant="outlined" color="inherit" sx={{mr: 2}}>Mis Clases</Button>
+                        <Button onClick={handleCheckRoutines} variant="outlined" color="inherit" sx={{mr: 2}}>Mis Rutinas</Button>
                         <Button  onClick={handleCreateRoutine} variant="outlined" color="inherit" sx={{mr: 2}}>Crear Rutinas</Button>
                     </Grid>
                 </Grid>

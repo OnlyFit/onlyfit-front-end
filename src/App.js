@@ -7,6 +7,8 @@ import HomeWithoutHome from './Components/HomeWithoutLogin/HomeWithoutLogin';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import CreateRoutine from './Components/CreateRoutine';
+import CoachRoutines from './Components/Dashboard/CoachRoutines';
+import CoachClasses from './Components/Dashboard/CoachClasses';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/user-home" component={UserDashboard} />
         <Route path="/coach-home" component={DashboardCoachTest} />
         <Route path="/createroutine" component={CreateRoutine}/>
+        <Route path="/check-routines" component={CoachRoutines}/>
+        <Route path="/check-classes" component={CoachClasses}/>
       </Switch>
     </div>
   );
