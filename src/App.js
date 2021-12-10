@@ -9,6 +9,7 @@ import SignUp from './Components/SignUp/SignUp';
 import CreateRoutine from './Components/CreateRoutine';
 import CoachRoutines from './Components/Dashboard/CoachRoutines';
 import CoachClasses from './Components/Dashboard/CoachClasses';
+import UsrRoutines from './Components/Dashboard/UsrRoutines';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/createroutine" component={CreateRoutine}/>
         <Route path="/check-routines" component={CoachRoutines}/>
         <Route path="/check-classes" component={CoachClasses}/>
+        <Route path="/check-routines-usr" component={UsrRoutines}/>
       </Switch>
     </div>
   );

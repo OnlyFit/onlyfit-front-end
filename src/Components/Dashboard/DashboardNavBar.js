@@ -28,6 +28,14 @@ const DashboardNavBar = () => {
         </Menu>
     );
 
+    const handleMainPage = () => {
+        history.push("/user-home")
+    }
+
+    const handleCheckRoutines = () => {
+        history.push("/check-routines-usr")
+    }
+
     return (
         <AppBar position="fixed" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
             <Toolbar>
@@ -36,8 +44,8 @@ const DashboardNavBar = () => {
                 </Typography>
                 <Grid container sx={{ml: 3}}>
                     <Grid item>
-                        <Button variant="outlined" color="inherit" sx={{mr: 2}}>Inicio</Button>
-                        <Button variant="outlined" color="inherit">Horario de Clases</Button>
+                        <Button onClick={handleMainPage} variant="outlined" color="inherit" sx={{mr: 2}}>Inicio</Button>
+                        <Button onClick={handleCheckRoutines} variant="outlined" color="inherit">Rutinas</Button>
                     </Grid>
                 </Grid>
                 <Box>
