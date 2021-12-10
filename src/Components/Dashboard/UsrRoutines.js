@@ -12,13 +12,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {useState, useEffect} from 'react';
 
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-
 
 
 function UsrRoutines() {
     const [routines, setRoutines] = useState('');
+    const [routines2, setRoutines2] = useState('');
     const [visible, setVisible] = useState('hidden');
 
     const getRoutines = () => {
@@ -39,6 +37,10 @@ function UsrRoutines() {
     
     const handleInscription = () =>{
         setVisible('visible');
+    }
+
+    const handleDesInscription = () =>{
+        setVisible('hidden');
     }
 
     let data = 
@@ -87,7 +89,7 @@ if (routines.length > 0) {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button onClick={"handleInscription"} size="medium">Inscribirse</Button>
+                            <Button onClick={handleInscription} size="medium">Inscribirse</Button>
                         </CardActions>
                     </Card>
             </Grid>
@@ -110,7 +112,7 @@ if (routines.length > 0) {
             }
             return(
                 <Grid item s={12} style={{paddingTop: '40px'}}> 
-                    <Card sx={{ maxWidth: 600 },{ visibility: {visible} }}>
+                    <Card sx={{ maxWidth: 600 },{ visibility: visible }}>
                         <CardMedia
                             component="img"
                             height="140"
@@ -126,7 +128,7 @@ if (routines.length > 0) {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button size="medium">Abrir</Button>
+                            <Button onClick={handleDesInscription} size="medium">Anular Inscripcion</Button>
                         </CardActions>
                     </Card>
             </Grid>
