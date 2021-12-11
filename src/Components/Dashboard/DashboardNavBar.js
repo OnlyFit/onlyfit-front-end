@@ -22,6 +22,14 @@ const DashboardNavBar = () => {
         localStorage.setItem("userMail","");
     }
 
+    const handleReturnHome = () => {
+        history.push("/user/home")
+    }
+
+    const handleViewClasses = () => {
+        history.push("/user/my-classes")
+    }
+
     const renderMenu = (
         <Menu anchorEl={anchorEl} anchorOrigin={{vertical: "top", horizontal: "right"}} keepMounted transformOrigin={{vertical: "top", horizontal: "right"}} open={isMenuOpen} onClose={handleCloseMenu} id={menuId}>
             <MenuItem onClick={(handleCloseMenu, handleLogout)}>Log out</MenuItem>
@@ -36,8 +44,8 @@ const DashboardNavBar = () => {
                 </Typography>
                 <Grid container sx={{ml: 3}}>
                     <Grid item>
-                        <Button variant="outlined" color="inherit" sx={{mr: 2}}>Inicio</Button>
-                        <Button variant="outlined" color="inherit">Horario de Clases</Button>
+                        <Button variant="outlined" color="inherit" sx={{mr: 2}} onClick={handleReturnHome}>Inicio</Button>
+                        <Button variant="outlined" color="inherit" sx={{mr: 2}} onClick={handleViewClasses}>Mis Clases</Button>
                     </Grid>
                 </Grid>
                 <Box>

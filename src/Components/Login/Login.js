@@ -24,17 +24,21 @@ const Login = () => {
       email: emailRef.current.value,
       password: passwordRef.current.value
     }).then((res) => {
-      localStorage.setItem("accessToken", res.data.accessToken);
+      console.log(res)
+      localStorage.setItem("accessToken", res.data.token);
+      localStorage.setItem("email", emailRef.current.value);
       
       if (role === "COACH") {
         console.log(role);
         history.push("/coach-home")
       } else if (role === "USER") {
         console.log(role);
-        history.push("/user-home")
+        history.push("/user/home")
       }
     }).catch(error => {
       alert("No son las credenciales correctas")
+      console.log(passwordRef.current.value)
+      console.log(emailRef.current.value)
     });
 
   };
