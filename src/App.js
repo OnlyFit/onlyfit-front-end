@@ -7,6 +7,7 @@ import HomeWithoutHome from './Components/HomeWithoutLogin/HomeWithoutLogin';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import CreateRoutine from './Components/CreateRoutine';
+import MyClasses from './Components/Dashboard/MyClasses';
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Route path="/" component={HomeWithoutHome} exact />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/user-home" component={UserDashboard} />
-        <Route path="/createroutine" component={CreateRoutine}/>
+        <Route path="/user/home" component={UserDashboard} />
+        <Route path="/createroutine" component={CreateRoutine} />
+        <Route path="/user/my-classes" component={MyClasses} />
       </Switch>
     </div>
   );

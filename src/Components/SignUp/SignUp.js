@@ -23,7 +23,8 @@ const SignUp = () => {
             lastName: lastNameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
-            rol: "USER"
+            rol: "USER",
+            routines: []
         }).then(response => {
             alert("Success!!")
             console.log(response);

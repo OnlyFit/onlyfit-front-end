@@ -22,15 +22,16 @@ const Login = () => {
       password: passwordRef.current.value
     }).then((res) => {
       localStorage.setItem("accessToken", res.data.accessToken)
+      localStorage.setItem("email", emailRef.current.value)
       if (role === "COACH") {
         history.push("/coach-home")
       } else if (role === "USER") {
-        history.push("/user-home")
+        history.push("/user/home")
       } else {
         history.push("/")
       }
 
-      history.push("/user-home")
+      history.push("/user/home")
     }).catch(error => {
       alert(error)
     });
