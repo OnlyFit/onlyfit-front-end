@@ -12,9 +12,12 @@ const Login = () => {
   const [role, setRole] = useState("");
 
   const loginRequest = () => {
+    console.log(emailRef.current.value);
     axios.get(`https://onlyfit-backend-staging.herokuapp.com/v1/user/email?emailAddress=${emailRef.current.value}`)
       .then((res) => {
         setRole(res.data)
+        console.log(role);
+        localStorage.setItem("userMail",emailRef.current.value);
       })
 
     axios.post("https://onlyfit-backend-staging.herokuapp.com/v1/auth", {
@@ -23,7 +26,9 @@ const Login = () => {
     }).then((res) => {
       localStorage.setItem("accessToken", res.data.accessToken)
       localStorage.setItem("email", emailRef.current.value)
+      
       if (role === "COACH") {
+        console.log(role);
         history.push("/coach-home")
       } else if (role === "USER") {
         history.push("/user/home")
@@ -32,8 +37,11 @@ const Login = () => {
       }
 
       history.push("/user/home")
-    }).catch(error => {
-      alert(error)
+        console.log(role);
+        history.push("/user-home")
+      }
+    ).catch(error => {
+      alert("No son las credenciales correctas")
     });
 
   };

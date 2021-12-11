@@ -8,6 +8,8 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import CreateRoutine from './Components/CreateRoutine';
 import MyClasses from './Components/Dashboard/MyClasses';
+import CoachRoutines from './Components/Dashboard/CoachRoutines';
+import CoachClasses from './Components/Dashboard/CoachClasses';
 
 function App() {
   return (
@@ -17,8 +19,11 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/user/home" component={UserDashboard} />
-        <Route path="/createroutine" component={CreateRoutine} />
         <Route path="/user/my-classes" component={MyClasses} />
+        <Route path="/coach-home" component={DashboardCoachTest} />
+        <Route path="/createroutine" component={CreateRoutine}/>
+        <Route path="/check-routines" component={CoachRoutines}/>
+        <Route path="/check-classes" component={CoachClasses}/>
       </Switch>
     </div>
   );

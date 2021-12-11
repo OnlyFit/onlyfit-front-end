@@ -19,13 +19,22 @@ import {
 import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useRef } from "react";
+import { useHistory } from "react-router";
+
 
 const CreateRoutine = (props) => {
   const nameRef = useRef();
   const descriptionRef = useRef();
   const purposeRef = useRef();
-  const emailCoachRef = useRef();
   const paymentRef = useRef();
+  const history = useHistory();
+
+  const [nameRoutine, setNameRoutine] = React.useState('');
+  
+
+  const handleChange = (event) => {
+    setNameRoutine(event.target.value);
+  };
 
   var tokenPrint = <p></p>;
   
@@ -35,25 +44,30 @@ const CreateRoutine = (props) => {
         name: nameRef.current.value,
         description: descriptionRef.current.value,
         purpose: purposeRef.current.value,
-        emailCoach: emailCoachRef.current.value,
+        emailCoach: localStorage.getItem("userMail"),
         payment: paymentRef.current.value,
       })
       .then((response) => {
         alert("Success!!");
         console.log(response);
         tokenPrint = <p>${response.data}</p>;
+        history.push("/coach-home");
       })
       .catch((error) => {
         console.log(
           nameRef.current.value,
           descriptionRef.current.value,
           purposeRef.current.value,
-          emailCoachRef.current.value,
+          localStorage.getItem("userMail"),
           paymentRef.current.value
         );
         alert(error);
         tokenPrint = <p>${error}</p>;
       });
+  };
+
+  const returnCoach = () => {
+    history.push("/coach-home");
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -68,25 +82,35 @@ const CreateRoutine = (props) => {
       >
         <Avatar sx={{ m: 1, bgcolor: "primary.main" }}></Avatar>
         <Typography component="h1" variant="h5">
-          Create Routine
+          Crear Rutina
         </Typography>
         <Box component="form" sx={{ mt: 1 }}>
-        <TextField
-            margin="normal"
-            required
-            fullWidth
-            label="name"
-            name="name"
-            type="name"
-            autoComplete="name"
-            inputRef={nameRef}
-          />
+          
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Nombre</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={nameRoutine}
+              label="Name"
+              onChange={handleChange}
+              inputRef={nameRef}
+            >
+              <MenuItem value={"cardio"}>Cardio</MenuItem>
+              <MenuItem value={"pesas"}>Pesas</MenuItem>
+              <MenuItem value={"crossfit"}>Crossfit</MenuItem>
+              <MenuItem value={"zumba"}>Zumba</MenuItem>
+              <MenuItem value={"tenis"}>Tenis</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
 
           <TextField
             margin="normal"
             required
             fullWidth
-            label="Description"
+            label="Descripcion"
             name="description"
             type="description"
             autoComplete="description"
@@ -96,24 +120,14 @@ const CreateRoutine = (props) => {
             margin="normal"
             required
             fullWidth
-            label="purpose"
+            label="Proposito"
             name="purpose"
             type="purpose"
             autoComplete="purpose"
             inputRef={purposeRef}
           />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            label="EmailCoach"
-            name="emailCoach"
-            type="email"
-            autoComplete="email"
-            inputRef={emailCoachRef}
-          />
           <FormControl component="fieldset">
-            <FormLabel component="legend">is it paid?</FormLabel>
+            <FormLabel component="legend">Es de pago?</FormLabel>
             <RadioGroup aria-label="gender" name="radio-buttons-group">
               <FormControlLabel
                 value="false"
@@ -135,7 +149,15 @@ const CreateRoutine = (props) => {
             sx={{ mt: 3, mb: 3 }}
             onClick={CreateRoutine}
           >
-            Create Routine
+            Crear
+          </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 0, mb: 3 }}
+            onClick={returnCoach}
+          >
+            Volver
           </Button>
         </Box>
       </Box>

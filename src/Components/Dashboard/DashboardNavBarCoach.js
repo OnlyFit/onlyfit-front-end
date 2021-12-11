@@ -3,7 +3,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-const DashboardNavBar = () => {
+const DashboardNavBarCoach = () => {
     const [anchorEl, setAnchorEl] = useState();
     const isMenuOpen = Boolean(anchorEl);
     const menuId = "account-menu";
@@ -18,16 +18,8 @@ const DashboardNavBar = () => {
     };
 
     const handleLogout = () => {
-        history.push("/");
+        history.push("/")
         localStorage.setItem("userMail","");
-    }
-
-    const handleReturnHome = () => {
-        history.push("/user/home")
-    }
-
-    const handleViewClasses = () => {
-        history.push("/user/my-classes")
     }
 
     const renderMenu = (
@@ -35,6 +27,22 @@ const DashboardNavBar = () => {
             <MenuItem onClick={(handleCloseMenu, handleLogout)}>Log out</MenuItem>
         </Menu>
     );
+
+    const handleCreateRoutine = () => {
+        history.push("/createroutine")
+    }
+
+    const handleCheckRoutines = () => {
+        history.push("/check-routines")
+    }
+
+    const handleCheckClasses = () => {
+        history.push("/check-classes")
+    }
+
+    const handleMainPage = () => {
+        history.push("/coach-home")
+    }
 
     return (
         <AppBar position="fixed" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
@@ -44,8 +52,10 @@ const DashboardNavBar = () => {
                 </Typography>
                 <Grid container sx={{ml: 3}}>
                     <Grid item>
-                        <Button variant="outlined" color="inherit" sx={{mr: 2}} onClick={handleReturnHome}>Inicio</Button>
-                        <Button variant="outlined" color="inherit" sx={{mr: 2}} onClick={handleViewClasses}>Mis Clases</Button>
+                        <Button onClick={handleMainPage} variant="outlined" color="inherit" sx={{mr: 2}}>Inicio</Button>
+                        <Button onClick={handleCheckClasses} variant="outlined" color="inherit" sx={{mr: 2}}>Mis Clases</Button>
+                        <Button onClick={handleCheckRoutines} variant="outlined" color="inherit" sx={{mr: 2}}>Mis Rutinas</Button>
+                        <Button  onClick={handleCreateRoutine} variant="outlined" color="inherit" sx={{mr: 2}}>Crear Rutinas</Button>
                     </Grid>
                 </Grid>
                 <Box>
@@ -59,4 +69,4 @@ const DashboardNavBar = () => {
     );
 }
 
-export default DashboardNavBar;
+export default DashboardNavBarCoach;
