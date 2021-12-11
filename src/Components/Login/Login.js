@@ -27,7 +27,7 @@ const Login = () => {
       console.log(res)
       localStorage.setItem("accessToken", res.data.token);
       localStorage.setItem("email", emailRef.current.value);
-      
+      console.log("antes if")
       if (role === "COACH") {
         console.log(role);
         history.push("/coach-home")
@@ -35,6 +35,7 @@ const Login = () => {
         console.log(role);
         history.push("/user/home")
       }
+      console.log("despues if")
     }).catch(error => {
       alert("No son las credenciales correctas")
       console.log(passwordRef.current.value)

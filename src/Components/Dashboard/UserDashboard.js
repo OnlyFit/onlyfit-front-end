@@ -103,7 +103,7 @@ const UserDashboard = () => {
             <CardActions>
               <Button
                 size="medium"
-                onClick={() => handleRegisterRoutine(ele.description)}
+                onClick={() => handleRegisterRoutine(ele.id)}
               >
                 Añadir a Mis Clases
               </Button>
