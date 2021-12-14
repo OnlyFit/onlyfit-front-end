@@ -10,6 +10,7 @@ import CreateRoutine from './Components/CreateRoutine';
 import MyClasses from './Components/Dashboard/MyClasses';
 import CoachRoutines from './Components/Dashboard/CoachRoutines';
 import CoachClasses from './Components/Dashboard/CoachClasses';
+import RoutineInfo from './Components/Dashboard/RoutineInfo';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/createroutine" component={CreateRoutine}/>
         <Route path="/check-routines" component={CoachRoutines}/>
         <Route path="/check-classes" component={CoachClasses}/>
+        <Route path="/routineInfo" component={RoutineInfo}/>
       </Switch>
     </div>
   );
