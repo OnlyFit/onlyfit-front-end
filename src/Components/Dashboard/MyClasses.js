@@ -15,11 +15,13 @@ import {
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import DashboardNavBar from './DashboardNavBar'
+import { useHistory } from "react-router-dom";
 
 const MyClasses = () => {
   const [myRoutines, setMyRoutines] = useState([])
   const email = localStorage.getItem('email')
   const [test, setTest] = useState([])
+  const history = useHistory();
 
   useEffect(() => {
     function getMyRoutines() {
@@ -58,6 +60,12 @@ const MyClasses = () => {
 
 
   console.log(test,"TEST")
+
+  function handleRoutineInfo(id){
+    localStorage.setItem("idRoutine", id)
+    console.log(id)
+    history.push("/routineinfo");
+  }
 
   let data = (
     <Grid container spacing={3}>
@@ -110,7 +118,7 @@ const MyClasses = () => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="medium">Ver Rutina</Button>
+              <Button size="medium" onClick={() => handleRoutineInfo(ele.id)}>Ver Rutina</Button>
             </CardActions>
           </Card>
         </Grid>

@@ -49,6 +49,7 @@ const CreateRoutine = (props) => {
       })
       .then((response) => {
         alert("Success!!");
+        console.log(paymentRef.current.value);
         console.log(response);
         tokenPrint = <p>${response.data}</p>;
         history.push("/coach-home");
@@ -128,20 +129,14 @@ const CreateRoutine = (props) => {
           />
           <FormControl component="fieldset">
             <FormLabel component="legend">Es de pago?</FormLabel>
-            <RadioGroup aria-label="gender" name="radio-buttons-group">
-              <FormControlLabel
-                value="false"
-                inputRef={paymentRef}
-                control={<Radio />}
-                label="No"
-              />
-              <FormControlLabel
-                value="true"
-                inputRef={paymentRef}
-                control={<Radio />}
-                label="Si"
-              />
-            </RadioGroup>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              inputRef={paymentRef}
+            >
+              <MenuItem value={"false"}>NO</MenuItem>
+              <MenuItem value={"true"}>SI</MenuItem>
+            </Select>
           </FormControl>
           <Button
             fullWidth
